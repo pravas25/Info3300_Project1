@@ -18,10 +18,9 @@
         
         var STATEWIDTH = 180;
         var STATEHEIGHT = 120;
-        var svgContainer
+        var svgContainer;
         var svgRectangles;
         var rectangles;
-        var pizzas;
 		 
         //read depression data
 		d3.csv("depressionData.csv", function(rows){
@@ -34,10 +33,10 @@
             //generate SVG per state
             svgRectangles = svgContainer.selectAll("svg")
                                     .data(rows).enter()
-                                    .append("svg");
-            var svgRectanglesAttr = svgRectangles                                    
-                                    .attr("width", STATEWIDTH)
+                                    .append("svg")
+            .attr("width", STATEWIDTH)
                                     .attr("height", STATEHEIGHT)
+
             .attr("x", function (d){ 
                 //generate x coordinate for SVG
                                 if(d.id%7 != 0)
@@ -53,7 +52,7 @@
 														});
             
             //generate rectangles
-            rectangles = svgContainer.selectAll("svg").append("rect");
+            rectangles = svgRectangles.append("rect");
 
 			var rectangleAttributes = rectangles
 										.attr("rx", 20)
@@ -93,11 +92,10 @@
 													return (parseInt((d.id-1)/7))*100 +((parseInt((d.id-1)/7))+1)*50; 
 													})
 									.style("font-size",20)
-						
 									.style("fill", function(d) { return "white"; })
 									.text(function(d) { return d.State; });
             
-                    var pizzaPath = [ {"x": 10, "y": 25}, {"x": 30, "y": 65},
+        var pizzaPath = [ {"x": 10, "y": 25}, {"x": 30, "y": 65},
                          {"x": 50, "y": 25}, {"x": 35, "y": 15},
                          {"x": 10, "y": 25}];
         
@@ -106,9 +104,10 @@
         .y(function(d) { return d.y; })
         .interpolate("monotone");
           
-        pizzas =  svgContainer.selectAll("svg").append("path")
+        var pizzas = svgRectangles.append("path")
         .attr("d", lineFunction(pizzaPath))
         .attr("fill", "orange");
+
 		}); //end d3.csv depression
         
         //create coordinates for pizzas
