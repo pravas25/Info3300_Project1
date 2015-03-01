@@ -1,6 +1,6 @@
 <html>
 	<head>
-
+        <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
 		<!-- Load the d3 library. -->
 		<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 		<script src="http://d3js.org/topojson.v1.min.js"></script>
@@ -76,25 +76,17 @@
 															return "black";
 															})
 										.attr("id", function(d){ return d.id });
-			svgContainer.selectAll("text")
-						.data(rows)
-						.enter().append("text")
-									.attr("x", function(d) { 
-												if(d.id%7 != 0)
-													return ((d.id - 1)%7)*175 + ((d.id)%7)*25; 
-												else 
-													return ((d.id - 1)%7)*175 + 7*25; })
-									.attr("y", function (d) { 
-												if(d.id <=7)
-													return 50; 
-												else if((parseInt(d.id%7)) != 0)
-													return (parseInt(d.id/7))*100 +((parseInt(d.id/7))+1)*50; 
-												else
-													return (parseInt((d.id-1)/7))*100 +((parseInt((d.id-1)/7))+1)*50; 
-													})
-									.style("font-size",20)
-									.style("fill", function(d) { return "white"; })
-									.text(function(d) { return d.State; });
+            
+            var text = svgContainer.selectAll("svg").append("text");
+			var textLabels = text
+							.attr("x", function(d) {return 90;})
+							.attr("y", function(d) {return 25;})
+							.attr("font-family", "lato")
+							.attr("font-size", "20px")
+							.attr("text-anchor", "middle")
+							.attr("fill", "white")
+							.text(function(d) { return d.State; });
+
 
             var pizzaPath = [ {"x": 10, "y": 25}, {"x": 30, "y": 65},
                              {"x": 50, "y": 25}, {"x": 35, "y": 15},
