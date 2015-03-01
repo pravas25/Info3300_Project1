@@ -50,7 +50,7 @@
                     else
                         return (parseInt((d.id-1)/7))*120 +((parseInt((d.id-1)/7))+1)*30; 
 														})
-            .attr("id", function(d, i) { return ("svg_" + i)});
+            .attr("id", function(d){ return d.id });
             
             //generate rectangles
             rectangles = svgRectangles.append("rect");
@@ -74,8 +74,7 @@
 															return "#6C939F";
 														else
 															return "black";
-															})
-										.attr("id", function(d){ return d.id });
+															});
             
             var text = svgContainer.selectAll("svg").append("text");
 			var textLabels = text
@@ -98,11 +97,9 @@
             .interpolate("monotone");
 
 
-            
-            
             for (var i in rows ) {
                 if (rows[i].StoresPerPeople > 2 ) {
-                    pizza[i] = d3.select("#svg_"+i).append("path").attr("d", lineFunction(pizzaPath))
+                    pizza[i] = d3.select("#"i).append("path").attr("d", lineFunction(pizzaPath))
                 .attr("fill", "orange");
                 }
             }//end for loop
