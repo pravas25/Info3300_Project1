@@ -1,52 +1,52 @@
-State,NoSample,MajorDepression,OtherDepression,AnyCurrentDepression,id
-Alabama,"2,758",4.1,8.9,13,1
-Alaska,"1,806",2.3,3.9,6.2,2
-Arizona,"5,314",3.6,6.7,10.3,3
-Arkansas,"4,809",4.9,7,11.9,4
-California,"5,177",3.7,5.4,9.1,5
-Colorado,"5,093",2.4,4.1,6.4,6
-Connecticut,"4,109",2,4.5,6.5,7
-Delaware,"3,780",3.4,6.9,10.2,8
-District of Columbia,"3,485",2.8,5.7,8.4,9
-Florida,"9,298",3.2,6.6,9.8,10
-Georgia,"6,485",3.4,5,8.5,11
-Hawaii,"5,901",3.1,6.6,9.7,12
-Idaho,"4,570",2.9,4.7,7.6,13
-Illinois,"4,879",3.1,6.9,10,14
-Indiana,"5,746",3.9,5,8.9,15
-Iowa,"4,692",2.1,4,6.2,16
-Kansas,"3,783",3.6,4.8,8.3,17
-Kentucky,NA,NA,NA,NA,18
-Louisiana,"5,388",2.9,7.9,10.8,19
-Maine,"3,724",3.5,4.4,7.9,20
-Maryland,"4,261",2.6,4.4,7,21
-Massachusetts,"5,835",2.6,4.9,7.5,22
-Michigan,"5,077",3.8,6.4,10.2,23
-Minnesota,"4,119",2.1,3.8,5.9,24
-Mississippi,"6,387",5.3,9.5,14.8,25
-Missouri,"4,771",4.1,5.6,9.7,26
-Montana,"5,262",2.4,4.1,6.5,27
-Nebraska,"4,840",2.3,6,8.3,28
-Nevada,"3,222",3.7,6.1,9.8,29
-New Hampshire,"5,230",3,4.1,7.1,30
-New Jersey,NA,NA,NA,NA,31
-New Mexico,"5,745",3.5,5.3,8.7,32
-New York,"3,444",2.2,5.6,7.8,33
-North Carolina,NA,NA,NA,NA,34
-North Dakota,"4,482",1.5,3.2,4.8,35
-Ohio,"5,797",3.9,4.9,8.8,36
-Oklahoma,"6,117",4.7,6.6,11.3,37
-Oregon,"4,294",3.5,3.6,7.1,38
-Pennsylvania,NA,NA,NA,NA,39
-Rhode Island,"4,002",3.4,5.4,8.8,40
-South Carolina,"7,853",3.6,6,9.6,41
-South Dakota,NA,NA,NA,NA,42
-Tennessee,"3,860",4.1,6.9,11,43
-Texas,"5,856",3.5,5.4,8.9,44
-Utah,"4,621",3.4,5.4,8.8,45
-Vermont,"6,185",3,4.8,7.8,46
-Virginia,"4,636",2.8,4.2,7,47
-Washington,"9,382",3.1,4.6,7.7,48
-West Virginia,"3,439",5.3,9,14.3,49
-Wisconsin,"4,228",2.3,4.2,6.5,50
-Wyoming,"4,495",3.1,4.5,7.6,51
+State,NoSample,MajorDepression,OtherDepression,AnyCurrentDepression,id,StoresPerPeople
+Alabama,"2,758",4.1,8.9,13,1,1.56
+Alaska,"1,806",2.3,3.9,6.2,2,2.04
+Arizona,"5,314",3.6,6.7,10.3,3,1.72
+Arkansas,"4,809",4.9,7,11.9,4,2.37
+California,"5,177",3.7,5.4,9.1,5,1.77
+Colorado,"5,093",2.4,4.1,6.4,6,2.02
+Connecticut,"4,109",2,4.5,6.5,7,3.57
+Delaware,"3,780",3.4,6.9,10.2,8,1.86
+District of Columbia,"3,485",2.8,5.7,8.4,9,3.42
+Florida,"9,298",3.2,6.6,9.8,10,2.28
+Georgia,"6,485",3.4,5,8.5,11,1.62
+Hawaii,"5,901",3.1,6.6,9.7,12,1.05
+Idaho,"4,570",2.9,4.7,7.6,13,2.33
+Illinois,"4,879",3.1,6.9,10,14,2.37
+Indiana,"5,746",3.9,5,8.9,15,2.96
+Iowa,"4,692",2.1,4,6.2,16,3.6
+Kansas,"3,783",3.6,4.8,8.3,17,2.48
+Kentucky,NA,NA,NA,NA,18,2.29
+Louisiana,"5,388",2.9,7.9,10.8,19,1.48
+Maine,"3,724",3.5,4.4,7.9,20,3
+Maryland,"4,261",2.6,4.4,7,21,2.24
+Massachusetts,"5,835",2.6,4.9,7.5,22,3.53
+Michigan,"5,077",3.8,6.4,10.2,23,2.86
+Minnesota,"4,119",2.1,3.8,5.9,24,2.46
+Mississippi,"6,387",5.3,9.5,14.8,25,1.51
+Missouri,"4,771",4.1,5.6,9.7,26,2.49
+Montana,"5,262",2.4,4.1,6.5,27,2.57
+Nebraska,"4,840",2.3,6,8.3,28,2.24
+Nevada,"3,222",3.7,6.1,9.8,29,2.3
+New Hampshire,"5,230",3,4.1,7.1,30,3.87
+New Jersey,NA,NA,NA,NA,31,3.18
+New Mexico,"5,745",3.5,5.3,8.7,32,1.55
+New York,"3,444",2.2,5.6,7.8,33,2.69
+North Carolina,NA,NA,NA,NA,34,2.02
+North Dakota,"4,482",1.5,3.2,4.8,35,2.42
+Ohio,"5,797",3.9,4.9,8.8,36,3.29
+Oklahoma,"6,117",4.7,6.6,11.3,37,2.12
+Oregon,"4,294",3.5,3.6,7.1,38,2.27
+Pennsylvania,NA,NA,NA,NA,39,3.56
+Rhode Island,"4,002",3.4,5.4,8.8,40,3.59
+South Carolina,"7,853",3.6,6,9.6,41,2
+South Dakota,NA,NA,NA,NA,42,2.52
+Tennessee,"3,860",4.1,6.9,11,43,2.01
+Texas,"5,856",3.5,5.4,8.9,44,1.64
+Utah,"4,621",3.4,5.4,8.8,45,1.86
+Vermont,"6,185",3,4.8,7.8,46,2.81
+Virginia,"4,636",2.8,4.2,7,47,2.12
+Washington,"9,382",3.1,4.6,7.7,48,1.93
+West Virginia,"3,439",5.3,9,14.3,49,3.19
+Wisconsin,"4,228",2.3,4.2,6.5,50,2.19
+Wyoming,"4,495",3.1,4.5,7.6,51,2.25
