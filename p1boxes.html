@@ -13,7 +13,7 @@
 	<div id="map"></div>
 	
 	<script>
-		var width = 1380,
+		var width = 1420,
 			height = 2500;
 		 
 		d3.csv("depressionData.csv", function(rows){
@@ -22,42 +22,57 @@
 								 .attr("height", height);
 
 			var rectangles = svgContainer.selectAll("rect")
-										 .data(rows)
-										 .enter()
-										 .append("rect");
+											 .data(rows)
+											 .enter()
+											 .append("rect");
 
 			var rectangleAttributes = rectangles
-									   .attr("x", function (d){ 
-													if(d.id%5 != 0)
-														return ((d.id - 1)%5) * 240 + ((d.id)%5)*30; 
+										.attr("rx", 20)
+										.attr("ry", 20)
+										.attr("x", function (d){ 
+													if(d.id%7 != 0)
+														return ((d.id - 1)%7)*180 + ((d.id)%7)*20; 
 													else 
-														return ((d.id - 1)%5) * 240 + 5*30; })
-									   .attr("y", function (d) { 
-													if((parseInt(d.id%5)) != 0)
-														return (parseInt(d.id/5))*160 +((parseInt(d.id/5))+1)*50; 
+														return ((d.id - 1)%7)*180 + 7*20; })
+										.attr("y", function (d) { 
+													if((parseInt(d.id%7)) != 0)
+														return (parseInt(d.id/7))*120 +((parseInt(d.id/7))+1)*30; 
 													else
-														return (parseInt((d.id-1)/5))*160 +((parseInt((d.id-1)/5))+1)*50; 
+														return (parseInt((d.id-1)/7))*120 +((parseInt((d.id-1)/7))+1)*30; 
 														})
-									   .attr("height", function (d) { return 160; })
-									   .attr("width", function (d) { return 240; })
-									   .style("fill", function(d) { return "gray"; })
-									   .attr("id", function(d){ return d.id });
+										.attr("height", function (d) { return 120; })
+										.attr("width", function (d) { return 180; })
+										.style("fill", function(d) { 
+														if (d.AnyCurrentDepression>=13.2 && d.AnyCurrentDepression <=14.8)
+															return "#022835";
+														else if (d.AnyCurrentDepression>=11.1 && d.AnyCurrentDepression <=13.1)
+															return "#104050";
+														else if (d.AnyCurrentDepression>=9 && d.AnyCurrentDepression <=11)
+															return "#26596A";
+														else if (d.AnyCurrentDepression>=6.9 && d.AnyCurrentDepression <=8.9)
+															return "#457585";
+														else if (d.AnyCurrentDepression>=4.8 && d.AnyCurrentDepression <=6.8)
+															return "#6C939F";
+														else
+															return "black";
+															})
+										.attr("id", function(d){ return d.id });
 			svgContainer.selectAll("text")
 						.data(rows)
 						.enter().append("text")
 									.attr("x", function(d) { 
-													if(d.id%5 != 0)
-														return ((d.id - 1)%5) * 235 + ((d.id)%5)*35; 
-													else 
-														return ((d.id - 1)%5) * 235 + 5*35; })
+												if(d.id%7 != 0)
+													return ((d.id - 1)%7)*175 + ((d.id)%7)*25; 
+												else 
+													return ((d.id - 1)%7)*175 + 7*25; })
 									.attr("y", function (d) { 
-													if(d.id <=5)
-														return 65; 
-													else if((parseInt(d.id%5)) != 0)
-														return (parseInt(d.id/5))*145 +((parseInt(d.id/5))+1)*65; 
-													else
-														return (parseInt((d.id-1)/5))*145 +((parseInt((d.id-1)/5))+1)*65; 
-														})
+												if(d.id <=7)
+													return 50; 
+												else if((parseInt(d.id%7)) != 0)
+													return (parseInt(d.id/7))*100 +((parseInt(d.id/7))+1)*50; 
+												else
+													return (parseInt((d.id-1)/7))*100 +((parseInt((d.id-1)/7))+1)*50; 
+													})
 									.style("font-size",20)
 									.style("fill", function(d) { return "white"; })
 									.text(function(d) { return d.State; });
