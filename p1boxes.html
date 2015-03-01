@@ -1,0 +1,70 @@
+<html>
+	<head>
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+		<!-- Load the d3 library. -->
+		<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+		<script src="http://d3js.org/topojson.v1.min.js"></script>
+		<style>
+			svg { border: solid black 1px;}
+		</style>
+	</head>
+	<body>
+	<!-- The SVG element will go in here -->
+	<div id="map"></div>
+	
+	<script>
+		var width = 1380,
+			height = 2500;
+		 
+		d3.csv("depressionData.csv", function(rows){
+			var svgContainer = d3.select("body").append("svg")
+								 .attr("width", width)
+								 .attr("height", height);
+
+			var rectangles = svgContainer.selectAll("rect")
+										 .data(rows)
+										 .enter()
+										 .append("rect");
+
+			var rectangleAttributes = rectangles
+									   .attr("x", function (d){ 
+													if(d.id%5 != 0)
+														return ((d.id - 1)%5) * 240 + ((d.id)%5)*30; 
+													else 
+														return ((d.id - 1)%5) * 240 + 5*30; })
+									   .attr("y", function (d) { 
+													if((parseInt(d.id%5)) != 0)
+														return (parseInt(d.id/5))*160 +((parseInt(d.id/5))+1)*50; 
+													else
+														return (parseInt((d.id-1)/5))*160 +((parseInt((d.id-1)/5))+1)*50; 
+														})
+									   .attr("height", function (d) { return 160; })
+									   .attr("width", function (d) { return 240; })
+									   .style("fill", function(d) { return "gray"; })
+									   .attr("id", function(d){ return d.id });
+			svgContainer.selectAll("text")
+						.data(rows)
+						.enter().append("text")
+									.attr("x", function(d) { 
+													if(d.id%5 != 0)
+														return ((d.id - 1)%5) * 235 + ((d.id)%5)*35; 
+													else 
+														return ((d.id - 1)%5) * 235 + 5*35; })
+									.attr("y", function (d) { 
+													if(d.id <=5)
+														return 65; 
+													else if((parseInt(d.id%5)) != 0)
+														return (parseInt(d.id/5))*145 +((parseInt(d.id/5))+1)*65; 
+													else
+														return (parseInt((d.id-1)/5))*145 +((parseInt((d.id-1)/5))+1)*65; 
+														})
+									.style("font-size",20)
+									.style("fill", function(d) { return "white"; })
+									.text(function(d) { return d.State; });
+		});
+		
+		
+	</script>
+
+	</body>
+</html>
