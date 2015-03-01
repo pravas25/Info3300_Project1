@@ -16,17 +16,18 @@
 		var width = 1420,
 			height = 2500;
         
-        var stateWidth = 180;
-        var stateHeight = 120;
-
+        var STATEWIDTH = 180;
+        var STATEHEIGHT = 120;
+        var svgContainer
         var svgRectangles;
         var rectangles;
+        var pizzas;
 		 
         //read depression data
 		d3.csv("depressionData.csv", function(rows){
             
             //generate outer SVG
-			var svgContainer = d3.select("body").append("svg")
+			svgContainer = d3.select("body").append("svg")
 								 .attr("width", width)
 								 .attr("height", height);
             
@@ -34,8 +35,9 @@
             svgRectangles = svgContainer.selectAll("svg")
                                     .data(rows).enter()
                                     .append("svg");
-            var svgRectanglesAttr = svgRectangles                                    .attr("width", stateWidth)
-                                    .attr("height", stateHeight)
+            var svgRectanglesAttr = svgRectangles                                    
+                                    .attr("width", STATEWIDTH)
+                                    .attr("height", STATEHEIGHT)
             .attr("x", function (d){ 
                 //generate x coordinate for SVG
                                 if(d.id%7 != 0)
@@ -57,8 +59,8 @@
 										.attr("rx", 20)
 										.attr("ry", 20)
 										
-										.attr("height", function (d) { return 120; })
-										.attr("width", function (d) { return 180; })
+										.attr("height", STATEHEIGHT)
+										.attr("width", STATEWIDTH)
 										.style("fill", function(d) { 
 														if (d.AnyCurrentDepression>=13.2 && d.AnyCurrentDepression <=14.8)
 															return "#022835";
@@ -94,24 +96,25 @@
 						
 									.style("fill", function(d) { return "white"; })
 									.text(function(d) { return d.State; });
-		}); //end d3.csv depression
-        
-        //create coordinates for pizzas
-        
-        var pizzaPath = [ {"x": 10, "y": 25}, {"x": 30, "y": 65},
+            
+                    var pizzaPath = [ {"x": 10, "y": 25}, {"x": 30, "y": 65},
                          {"x": 50, "y": 25}, {"x": 35, "y": 15},
                          {"x": 10, "y": 25}];
         
         var lineFunction = d3.svg.line()
         .x(function(d) { return d.x; })
         .y(function(d) { return d.y; })
-        .interpolate("linear");
+        .interpolate("monotone");
           
-        /*
-        rectangles.append("path")
+        pizzas =  svgContainer.selectAll("svg").append("path")
         .attr("d", lineFunction(pizzaPath))
         .attr("fill", "orange");
-        */
+		}); //end d3.csv depression
+        
+        //create coordinates for pizzas
+        
+
+        
         
         //read pizza stores
     //d3.json("pizzastore.json", function(error, pizzaStores) {
