@@ -21,9 +21,11 @@
         var svgContainer;
         var svgRectangles;
         var rectangles;
+        
+        var pizza = [];
 		 
         //read depression data
-		d3.csv("depressionData.csv", function(rows){
+		var data = d3.csv("depressionData.csv", function(rows){
             
             //generate outer SVG
 			svgContainer = d3.select("body").append("svg")
@@ -49,7 +51,8 @@
                         return (parseInt(d.id/7))*120 +((parseInt(d.id/7))+1)*30; 
                     else
                         return (parseInt((d.id-1)/7))*120 +((parseInt((d.id-1)/7))+1)*30; 
-														});
+														})
+            .attr("id", function(d, i) { return ("svg_" + i)});
             
             //generate rectangles
             rectangles = svgRectangles.append("rect");
@@ -94,34 +97,29 @@
 									.style("font-size",20)
 									.style("fill", function(d) { return "white"; })
 									.text(function(d) { return d.State; });
+
+            var pizzaPath = [ {"x": 10, "y": 25}, {"x": 30, "y": 65},
+                             {"x": 50, "y": 25}, {"x": 35, "y": 15},
+                             {"x": 10, "y": 25}];
+
+            var lineFunction = d3.svg.line()
+            .x(function(d) { return d.x; })
+            .y(function(d) { return d.y; })
+            .interpolate("monotone");
+
+
             
-        var pizzaPath = [ {"x": 10, "y": 25}, {"x": 30, "y": 65},
-                         {"x": 50, "y": 25}, {"x": 35, "y": 15},
-                         {"x": 10, "y": 25}];
-        
-        var lineFunction = d3.svg.line()
-        .x(function(d) { return d.x; })
-        .y(function(d) { return d.y; })
-        .interpolate("monotone");
-          
-        var pizzas = svgRectangles.append("path")
-        .attr("d", lineFunction(pizzaPath))
-        .attr("fill", "orange");
+            
+            for (var i in rows ) {
+                if (rows[i].StoresPerPeople > 2 ) {
+                    pizza[i] = d3.select("#svg_"+i).append("path").attr("d", lineFunction(pizzaPath))
+                .attr("fill", "orange");
+                }
+            }//end for loop
+            
 
 		}); //end d3.csv depression
-        
-        //create coordinates for pizzas
-        
 
-        
-        
-        //read pizza stores
-    //d3.json("pizzastore.json", function(error, pizzaStores) {
-        
-
-   // }
-		
-		
 	</script>
 
 	</body>
