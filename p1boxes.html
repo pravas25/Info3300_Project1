@@ -18,6 +18,8 @@
         
         var stateWidth = 180;
         var stateHeight = 120;
+
+        var svgRectangles;
         var rectangles;
 		 
         //read depression data
@@ -29,7 +31,7 @@
 								 .attr("height", height);
             
             //generate SVG per state
-            var svgRectangles = svgContainer.selectAll("svg")
+            svgRectangles = svgContainer.selectAll("svg")
                                     .data(rows).enter()
                                     .append("svg");
             var svgRectanglesAttr = svgRectangles                                    .attr("width", stateWidth)
@@ -49,10 +51,7 @@
 														});
             
             //generate rectangles
-            rectangles = svgRectangles.selectAll("svg")
-											 .data(rows)
-											 .enter()
-											 .append("rect");
+            rectangles = svgContainer.selectAll("svg").append("rect");
 
 			var rectangleAttributes = rectangles
 										.attr("rx", 20)
