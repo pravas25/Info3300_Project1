@@ -24,4 +24,16 @@ h1 {
     border: solid #26596A 1px; 
     margin-left: 30px;
 }
-    
+#map { border: solid black 1px; 
+width: 960px;
+height: 500px;
+margin: auto;}
+
+.land {
+fill: #222;
+}
+
+.state-boundary {
+fill: none;
+stroke: #fff;
+}
