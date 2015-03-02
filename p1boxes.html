@@ -51,57 +51,49 @@
             
             //generate outer SVG
 			svgContainer = d3.select("body").append("svg")
-								 .attr("width", MAINWIDTH)
-								 .attr("height", MAINHEIGHT);
+                             .attr("width", MAINWIDTH)
+                             .attr("height", MAINHEIGHT);
             
             //generate SVG per state
-            svgRectangles = svgContainer.selectAll("svg")
-                                    .data(rows).enter()
-                                    .append("svg")
-            .attr("width", WIDTH)
-                                    .attr("height", HEIGHT)
-
-            .attr("x", function (d){ 
-                //generate x coordinate for SVG
-                                if(d.id%ROW != 0)
-                                    return ((d.id - 1)%ROW)*WIDTH + ((d.id)%ROW)*COLPADDING; 
-                                else 
-                                    return ((d.id - 1)%ROW)*WIDTH + ROW*COLPADDING; })
-										.attr("y", function (d) { 
-                                            //generate Y coordinate for SVG
-                    if((parseInt(d.id%ROW)) != 0)
-                        return (parseInt(d.id/ROW))*HEIGHT +((parseInt(d.id/ROW))+1)*ROWPADDING; 
-                    else
-                        return (parseInt((d.id-1)/ROW))*HEIGHT +((parseInt((d.id-1)/ROW))+1)*ROWPADDING; 
-
-                              
-														})
-            .attr("id", function(d, i) { return ( "svg_" + i) });
+            svgRectangles = svgContainer.selectAll("svg").data(rows).enter().append("svg")
+                            .attr("width", WIDTH)
+                            .attr("height", HEIGHT)
+                            .attr("x", function (d){ 
+                            //generate x coordinate for SVG
+                                    if(d.id%ROW != 0) return ((d.id - 1)%ROW)*WIDTH + ((d.id)%ROW)*COLPADDING; 
+                                    else return ((d.id - 1)%ROW)*WIDTH + ROW*COLPADDING; })
+                                                .attr("y", function (d) { 
+                                                //generate Y coordinate for SVG
+                                    if((parseInt(d.id%ROW)) != 0)
+                                        return (parseInt(d.id/ROW))*HEIGHT +((parseInt(d.id/ROW))+1)*ROWPADDING; 
+                                    else
+                                        return (parseInt((d.id-1)/ROW))*HEIGHT +((parseInt((d.id-1)/ROW))+1)*ROWPADDING; })
+                            .attr("id", function(d, i) { return ( "svg_" + i) });
             
             //generate rectangles
             rectangles = svgRectangles.append("rect");
 
 			var rectangleAttributes = rectangles
-										.attr("rx", 20)
-										.attr("ry", 20)
-										
-										.attr("height", HEIGHT)
-										.attr("width", WIDTH)
-										.style("fill", function(d) { 
-														if (d.AnyCurrentDepression>=13.2 && d.AnyCurrentDepression <=14.8)
-															return "#022835";
-														else if (d.AnyCurrentDepression>=11.1 && d.AnyCurrentDepression <=13.1)
-															return "#104050";
-														else if (d.AnyCurrentDepression>=9 && d.AnyCurrentDepression <=11)
-															return "#26596A";
-														else if (d.AnyCurrentDepression>=6.9 && d.AnyCurrentDepression <=8.9)
-															return "#457585";
-														else if (d.AnyCurrentDepression>=4.8 && d.AnyCurrentDepression <=6.8)
-															return "#6C939F";
-														else
-															return "black";
-															})
-										.attr("id", function(d){ return d.id });
+                            .attr("rx", 20)
+                            .attr("ry", 20)
+                            .attr("height", HEIGHT)
+                            .attr("width", WIDTH)
+                            .style("fill", function(d) { 
+                                    if (d.AnyCurrentDepression>=13.2 && d.AnyCurrentDepression <=14.8)
+                                        return "#022835";
+                                    else if (d.AnyCurrentDepression>=11.1 && d.AnyCurrentDepression <=13.1)
+                                        return "#104050";
+                                    else if (d.AnyCurrentDepression>=9 && d.AnyCurrentDepression <=11)
+                                        return "#26596A";
+                                    else if (d.AnyCurrentDepression>=6.9 && d.AnyCurrentDepression <=8.9)
+                                        return "#457585";
+                                    else if (d.AnyCurrentDepression>=4.8 && d.AnyCurrentDepression <=6.8)
+                                        return "#6C939F";
+                                    else
+                                        return "black";
+                                        })
+                            .attr("id", function(d){ return d.id });
+            
             //generate text
             var text = svgContainer.selectAll("svg").append("text");
 			var textLabels = text
@@ -138,13 +130,16 @@
             });
             
             //ONE PIZZA
+            //create group for one pizza
             var stateRange1 = svgContainer.selectAll(".range1").append("g");
+            //make first pizza
             var pizza1 = stateRange1.append("path").attr("d", lineFunction(pizzaPath))
                 .attr("fill", "#ffbd19");
+            //give pizza pepperoni toppings
             var pizzaTopping1 = stateRange1.selectAll("circle")
-            .data(pepperoniData)
-            .enter()
-            .append("circle");
+                .data(pepperoniData)
+                .enter()
+                .append("circle");
             
             var toppingAttributes1 = pizzaTopping1
                 .attr("cx", function (d) { return d.cx; })
@@ -153,24 +148,16 @@
                 .style("fill", function (d) { return d.color; });
             
             //TWO PIZZAS
-            /*
-            var stateRange2 = svgContainer.selectAll(".range2");
-            stateRange2.append("path").attr("d", lineFunction(pizzaPath))
-                .attr("fill", "#ffbd19");
-            stateRange2.append("path").attr("d", lineFunction(pizzaPath))
-                .attr("fill", "#ffbd19")
-                .attr("transform", "translate( 40,0)");
-                */
             var stateRange2 = svgContainer.selectAll(".range2").append("g").attr("id", "pizzaFirst");
             var pizza2 = stateRange2.append("path").attr("d", lineFunction(pizzaPath))
                 .attr("fill", "#ffbd19");
                 
             var pizzaTopping2 = stateRange2.selectAll("circle")
-            .data(pepperoniData)
-            .enter()
-            .append("circle");
+                .data(pepperoniData)
+                .enter()
+                .append("circle");
             
-            //2md pizza
+            //2nd pizza
             svgContainer.selectAll(".range2").append("use")
                 .attr("xlink:href","#pizzaFirst")
                 .attr("transform", "translate(40,0)");
@@ -188,9 +175,9 @@
                 .attr("fill", "#ffbd19");
                 
             var pizzaTopping3 = stateRange3.selectAll("circle")
-            .data(pepperoniData)
-            .enter()
-            .append("circle");
+                .data(pepperoniData)
+                .enter()
+                .append("circle");
             
             svgContainer.selectAll(".range3").append("use")
                 .attr("xlink:href","#pizzaFirst")
@@ -211,9 +198,9 @@
                 .attr("fill", "#ffbd19");
                 
             var pizzaTopping4 = stateRange4.selectAll("circle")
-            .data(pepperoniData)
-            .enter()
-            .append("circle");
+                .data(pepperoniData)
+                .enter()
+                .append("circle");
             
             svgContainer.selectAll(".range4").append("use")
                 .attr("xlink:href","#pizzaFirst")
@@ -238,9 +225,9 @@
                 .attr("fill", "#ffbd19");
                 
             var pizzaTopping5 = stateRange5.selectAll("circle")
-            .data(pepperoniData)
-            .enter()
-            .append("circle");
+                .data(pepperoniData)
+                .enter()
+                .append("circle");
             
             svgContainer.selectAll(".range5").append("use")
                 .attr("xlink:href","#pizzaFirst")
@@ -267,9 +254,9 @@
                 .attr("fill", "#ffbd19");
                 
             var pizzaTopping6 = stateRange6.selectAll("circle")
-            .data(pepperoniData)
-            .enter()
-            .append("circle");
+                .data(pepperoniData)
+                .enter()
+                .append("circle");
             
             svgContainer.selectAll(".range6").append("use")
                 .attr("xlink:href","#pizzaFirst")
