@@ -16,6 +16,9 @@
 			MAINHEIGHT = 2500;
         var WIDTH = 180;
         var HEIGHT = 120;
+        var COLPADDING = 20;
+        var ROWPADDING = 30;
+        var ROW = 5;
         
         var svgContainer;
         var svgRectangles;
@@ -41,16 +44,16 @@
 
             .attr("x", function (d){ 
                 //generate x coordinate for SVG
-                                if(d.id%7 != 0)
-                                    return ((d.id - 1)%7)*180 + ((d.id)%7)*20; 
+                                if(d.id%ROW != 0)
+                                    return ((d.id - 1)%ROW)*WIDTH + ((d.id)%ROW)*COLPADDING; 
                                 else 
-                                    return ((d.id - 1)%7)*180 + 7*20; })
+                                    return ((d.id - 1)%ROW)*WIDTH + ROW*COLPADDING; })
 										.attr("y", function (d) { 
                                             //generate Y coordinate for SVG
-                    if((parseInt(d.id%7)) != 0)
-                        return (parseInt(d.id/7))*120 +((parseInt(d.id/7))+1)*30; 
+                    if((parseInt(d.id%ROW)) != 0)
+                        return (parseInt(d.id/ROW))*HEIGHT +((parseInt(d.id/ROW))+1)*ROWPADDING; 
                     else
-                        return (parseInt((d.id-1)/7))*120 +((parseInt((d.id-1)/7))+1)*30; 
+                        return (parseInt((d.id-1)/ROW))*HEIGHT +((parseInt((d.id-1)/ROW))+1)*ROWPADDING; 
 														})
             .attr("id", function(d, i) { return ( "svg_" + i) });
             
