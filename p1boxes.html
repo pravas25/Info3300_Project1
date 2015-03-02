@@ -20,6 +20,7 @@
         var svgRectangles;
         var rectangles;
         
+        var pizzaRange1;
         var pizza = [];
 		 
         //read depression data
@@ -50,7 +51,7 @@
                     else
                         return (parseInt((d.id-1)/7))*120 +((parseInt((d.id-1)/7))+1)*30; 
 														})
-            .attr("id", function(d){ return d.id });
+            .attr("id", function(d, i) { return ( "svg_" + i) });
             
             //generate rectangles
             rectangles = svgRectangles.append("rect");
@@ -74,7 +75,8 @@
 															return "#6C939F";
 														else
 															return "black";
-															});
+															})
+										.attr("id", function(d){ return d.id });
             
             var text = svgContainer.selectAll("svg").append("text");
 			var textLabels = text
@@ -88,9 +90,48 @@
 
 
             var pizzaPath = [ {"x": 10, "y": 25}, {"x": 30, "y": 65},
-                             {"x": 50, "y": 25}, {"x": 35, "y": 15},
+                             {"x": 50, "y": 25}, {"x": 30, "y": 20},
                              {"x": 10, "y": 25}];
+
+            var lineFunction = d3.svg.line()
+            .x(function(d) { return d.x; })
+            .y(function(d) { return d.y; })
+            .interpolate("monotone");
             
+            //Establish range of pizza stores for each state
+            var stateClass = svgRectangles.attr("class", function(d) {
+                
+                if (d.StoresPerPeople <= 1.80 ) return "range1";
+                if (d.StoresPerPeople <= 2.05 ) return "range2";
+                if (d.StoresPerPeople <= 2.30 ) return "range3";
+                if (d.StoresPerPeople <= 2.50 ) return "range4";
+                if (d.StoresPerPeople <= 3.20 ) return "range5";
+                if (d.StoresPerPeople <= 3.90 ) return "range6";
+            });
+            
+            var PIZZATRANSLATE = 20;
+            //ONE PIZZA
+            var stateRange1 = svgContainer.selectAll(".range1").append("path").attr("d", lineFunction(pizzaPath))
+                .attr("fill", "orange");
+            
+            //TWO PIZZAS
+            var stateRange2 = svgContainer.selectAll(".range2");
+            stateRange2.append("path").attr("d", lineFunction(pizzaPath))
+                .attr("fill", "orange");
+            stateRange2.append("path").attr("d", lineFunction(pizzaPath))
+                .attr("fill", "orange")
+                .attr("transform", "translate( 40,0)");
+            
+            //THREE PIZZAS
+            var stateRange3 = svgContainer.selectAll(".range3");
+            stateRange3.append("path").attr("d", lineFunction(pizzaPath))
+                .attr("fill", "orange");
+            stateRange3.append("path").attr("d", lineFunction(pizzaPath))
+                .attr("fill", "orange")
+                .attr("transform", "translate(40,0)");
+            stateRange3.append("path").attr("d", lineFunction(pizzaPath))
+                .attr("fill", "orange")
+                .attr("transform", "translate(80,0)");
 
 		}); //end d3.csv depression
 
