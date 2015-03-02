@@ -57,8 +57,6 @@ Zoom in and out of the page to get a better idea!</h3>
                 <text x = "35" y = "230" fill = "black" font-family = "lato"> = Pizza Stores</text>
                 <text x = "48" y = "245" fill = "black" font-family = "lato"> per Capita </text>
 
-
-
 		</svg>
 
 
@@ -69,7 +67,7 @@ Zoom in and out of the page to get a better idea!</h3>
 	<script>
         //constants
 		var MAINWIDTH = 960,
-			MAINHEIGHT = 2500;
+			MAINHEIGHT = 1300;
         var WIDTH = 180,
             HEIGHT = 120;
         var COLPADDING = 10,
@@ -467,7 +465,7 @@ d3.json("us.json", function(error, us) {
 			}
 			});
 			
-		var legend = [1.3625, 1.725, 2.0875, 2.45, 2.8125, 3.175, 3.5375, 3.9];
+		var legend = [1, 1.3625, 1.725, 2.0875, 2.45, 2.8125, 3.175, 3.5375];
 		for(var i=0; i<8; i++){
 		  if(i<4){
 			svg.selectAll(".circle")
