@@ -368,7 +368,9 @@
 		}); //end d3.csv depression
         
         </script>
+        
         <script>
+            //MAP SVG
             var temp_data;
             var MAPWIDTH = 960,
                 MAPHEIGHT = 500;
@@ -380,7 +382,7 @@
             var path = d3.geo.path()
                 .projection(projection);
 
-            var svg = d3.select("#map").append("svg")
+            var svg = d3.select("body").append("svg")
                 .attr("width", MAPWIDTH)
                 .attr("height", MAPHEIGHT);
 
@@ -508,7 +510,5 @@ d3.json("us.json", function(error, us) {
 
 d3.select(self.frameElement).style("height", MAPHEIGHT + "px");
 	</script>
-	<div id="map">
-        </div>
 	</body>
 </html>
