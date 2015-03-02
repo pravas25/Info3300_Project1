@@ -1,18 +1,16 @@
 <html>
 	<head>
         <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="main.css">
 		<!-- Load the d3 library. -->
 		<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 		<script src="http://d3js.org/topojson.v1.min.js"></script>
-		<style>
-		svg {margin-left:auto; margin-right: auto; display:block;} /*ADDED STUFF HERE*/
-		svg { border: solid black 1px; } /*ADDED STUFF HERE*/
-		</style>
+
 	</head>
 
 		<header>
-		<h1 align = "center"> Pizza Stores per Capita VS Depression in the US </h1> <!-- ADDED STUFF HERE -->
-		<svg height = "160" width = "400"> 
+		<h1> Pizza Stores<br>VS </br>Depression in the United States </h1> <!-- ADDED STUFF HERE -->
+		<svg height = "160" width = "400" id="key"> 
 				<rect x = "0" y = "10" width = "30" height = "20" rx = "5" ry = "5" fill = "#022835"> </rect>
 				<text x = "35" y = "25" fill = "black" font-family = "lato"> = 13.2 - 14.8 </text>
 				<rect x = "0" y = "40" width = "30" height = "20" rx = "5" ry = "5" fill = "#104050"> </rect>
