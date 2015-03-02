@@ -6,57 +6,24 @@
 		<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 		<script src="http://d3js.org/topojson.v1.min.js"></script>
 	</head>
-	<body>
+
 		<header>
-
-		<h1> Pizza Stores VS Depression in the United States </h1> <!-- ADDED STUFF HERE -->
-            	</header>
-		<svg height = "250" width = "400" id="key"> 
+		<h1> Pizza Stores<br>VS </br>Depression in the United States </h1> <!-- ADDED STUFF HERE -->
+		<svg height = "160" width = "400" id="key"> 
 				<rect x = "0" y = "10" width = "30" height = "20" rx = "5" ry = "5" fill = "#022835"> </rect>
-
-
-				<rect x = "0" y = "10" width = "30" height = "20" rx = "5" ry = "5" fill = "#0B1B1E"> </rect>
-
 				<text x = "35" y = "25" fill = "black" font-family = "lato"> = 13.2 - 14.8 </text>
-				<rect x = "0" y = "40" width = "30" height = "20" rx = "5" ry = "5" fill = "#073945"> </rect>
+				<rect x = "0" y = "40" width = "30" height = "20" rx = "5" ry = "5" fill = "#104050"> </rect>
 				<text x = "35" y = "55" fill = "black" font-family = "lato"> = 11.1 - 13.1 </text>
-				<rect x = "0" y = "70" width = "30" height = "20" rx = "5" ry = "5" fill = "#2C6674"> </rect>
+				<rect x = "0" y = "70" width = "30" height = "20" rx = "5" ry = "5" fill = "#26596A"> </rect>
 				<text x = "35" y = "85" fill = "black" font-family = "lato"> = 9.0 - 11.0 </text>
-				<rect x = "0" y = "100" width = "30" height = "20" rx = "5" ry = "5" fill = "#6D9DA8"> </rect>
+				<rect x = "0" y = "100" width = "30" height = "20" rx = "5" ry = "5" fill = "#457585"> </rect>
 				<text x = "35" y = "115" fill = "black" font-family = "lato"> = 6.9 - 8.9 </text>
-				<rect x = "0" y = "130" width = "30" height = "20" rx = "5" ry = "5" fill = "#A3A8A9"> </rect>
+				<rect x = "0" y = "130" width = "30" height = "20" rx = "5" ry = "5" fill = "#6C939F"> </rect>
 				<text x = "35" y = "145" fill = "black" font-family = "lato"> = 4.8 - 6.8 </text>
-
-                <text x = "210" y = "25" fill = "black" font-family = "lato"> X1  =  0 - 1.3625 </text>
-                <path  d = "M185 15 L195 30 L205 15 L195 10 L185 15 Z" fill ="orange"> </path>
-                <text x = "210" y = "55" fill = "black" font-family = "lato"> X2  =  1.3626 - 1.725 </text>
-                <path  d = "M185 45 L195 60 L205 45 L195 40 L185 45 Z" fill ="orange"> </path>
-                <text x = "210" y = "85" fill = "black" font-family = "lato"> X3  =  1.726 - 2.0875 </text>
-                <path  d = "M185 75 L195 90 L205 75 L195 70 L185 75 Z" fill ="orange"> </path>
-                <text x = "210" y = "115" fill = "black" font-family = "lato"> X4  =  2.0876 - 2.45 </text>
-                <path  d = "M185 105 L195 120 L205 105 L195 100 L185 105 Z" fill ="orange"> </path>
-                <text x = "210" y = "145" fill = "black" font-family = "lato"> X5  =  2.46 - 2.8125 </text>
-                <path  d = "M185 135 L195 150 L205 135 L195 130 L185 135 Z" fill ="orange"> </path>
-                <text x = "210" y = "175" fill = "black" font-family = "lato"> X6  =  2.8126 - 3.175 </text>
-                <path  d = "M185 165 L195 180 L205 165 L195 160 L185 165 Z" fill ="orange"> </path>
-                <text x = "210" y = "205" fill = "black" font-family = "lato"> X7  =  3.176 - 3.5375 </text>
-                <path  d = "M185 195 L195 210 L205 195 L195 190 L185 195 Z" fill ="orange"> </path>
-                <text x = "210" y = "235" fill = "black" font-family = "lato"> X8  =  3.5375 - 3.9 </text>
-                <path  d = "M185 225 L195 240 L205 225 L195 220 L185 225 Z" fill ="orange"> </path>
-
-                <rect x = "0" y = "175" width = "30" height = "20" rx = "5" ry = "5" fill = "white" stroke = "gray"> </rect>
-                <text x = "35" y = "190" fill = "black" font-family = "lato">  =  % Population </text>
-                <text x = "48" y = "205" fill = "black" font-family = "lato"> Depressed </text>
-                <path  d = "M5 220 L15 235 L25 220 L15 215 L5 220 Z" fill ="orange"> </path>
-                <text x = "35" y = "230" fill = "black" font-family = "lato"> = Pizza Stores</text>
-                <text x = "48" y = "245" fill = "black" font-family = "lato"> per Capita </text>
-
-
-
 		</svg>
+	</header>
 
-
-
+	<body>
 	<!-- The SVG element will go in here -->
 
 	
@@ -417,8 +384,7 @@
 
             var svg = d3.select("body").append("svg")
                 .attr("width", MAPWIDTH)
-                .attr("height", MAPHEIGHT)
-                .attr("id", "map");
+                .attr("height", MAPHEIGHT);
 
 d3.json("us.json", function(error, us) {
   d3.json("depressionDataStateUpdate.json", function(rows){
@@ -443,28 +409,28 @@ d3.json("us.json", function(error, us) {
 				}
 			}
 			if(rows[temp]){
-			console.log("state: " + state.id + "; anycurrent: " + rows[temp].AnyCurrentDepression + "pizza:" +rows[temp].StoresPerPeople );
+			console.log("temp: " + temp + ". state.id: " + state.id); 
 			if (rows[temp].AnyCurrentDepression>=13.2 && rows[temp].AnyCurrentDepression <=14.8){
-				//console.log("state: " + state.id + "; anycurrent: " + rows[temp].AnyCurrentDepression + "pizza:" +rows[temp].StoresPerPeople );
-				return "#0B1B1E";	
+				console.log("state: " + state.id + "; anycurrent: " + rows[temp].AnyCurrentDepression  );
+				return "#022835";	
 			}
 			else if (rows[temp].AnyCurrentDepression>=11.1 && rows[temp].AnyCurrentDepression<=13.1){
 				console.log("state: " + state.id + "; anycurrent: " + rows[temp].AnyCurrentDepression  );
-				return "#073945";}
+				return "#104050";}
 			else if (rows[temp].AnyCurrentDepression>=9 && rows[temp].AnyCurrentDepression<=11)
-				return "#2C6674";
+				return "#26596A";
 			else if (rows[temp].AnyCurrentDepression>=6.9 && rows[temp].AnyCurrentDepression<=8.9)
-				return "#6D9DA8";
+				return "#457585";
 			else if (rows[temp].AnyCurrentDepression>=4.8 && rows[temp].AnyCurrentDepression<=6.8)
-				return "#A3A8A9";
+				return "#6C939F";
 			else
-				return "white";
+				return "gray";
 			}
 			});
 			
-		var legend = [1.3625, 1.725, 2.0875, 2.45, 2.8125, 3.175, 3.5375, 3.9];
-		for(var i=0; i<8; i++){
-		  if(i<4){
+		var legend = [1.00, 1.81, 2.05, 2.31, 2.51, 3.20];
+		for(var i=0; i<6; i++){
+		  if(i<3){
 			svg.selectAll(".circle")
 				.data(topojson.feature(us, us.objects.states).features)
 				.enter().append("circle")
@@ -482,6 +448,7 @@ d3.json("us.json", function(error, us) {
 				})
 				.attr("r", 3)
 				.style("fill", function(state){
+				  
 				    var temp;
 					for(var j=0; j<rows.length;  j++){
 						if(rows[j].id == state.id){
@@ -490,7 +457,7 @@ d3.json("us.json", function(error, us) {
 						}
 					}
 					if(rows[temp]){
-						if (rows[temp].StoresPerPeople>legend[i]){
+						if (rows[temp].StoresPerPeople>=legend[i]){
 							return "orange";	
 						}else{
 						    return "rgba(0,0,0,0)";
@@ -508,7 +475,7 @@ d3.json("us.json", function(error, us) {
 				  var center = path.centroid(feature.geometry)[0];
 				  if(isNaN(center))
 					return 99999;
-				  else return (center + (i%4)*7)-8;
+				  else return (center + (i%3)*7)-8;
 				})
 				.attr("cy", function(feature){
 				  var center = path.centroid(feature.geometry)[1];
