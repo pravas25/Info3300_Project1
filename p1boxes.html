@@ -11,11 +11,12 @@
 	<div id="map"></div>
 	
 	<script>
-		var width = 1420,
-			height = 2500;
+        //constants
+		var MAINWIDTH = 1420,
+			MAINHEIGHT = 2500;
+        var WIDTH = 180;
+        var HEIGHT = 120;
         
-        var STATEWIDTH = 180;
-        var STATEHEIGHT = 120;
         var svgContainer;
         var svgRectangles;
         var rectangles;
@@ -28,15 +29,15 @@
             
             //generate outer SVG
 			svgContainer = d3.select("body").append("svg")
-								 .attr("width", width)
-								 .attr("height", height);
+								 .attr("width", MAINWIDTH)
+								 .attr("height", MAINHEIGHT);
             
             //generate SVG per state
             svgRectangles = svgContainer.selectAll("svg")
                                     .data(rows).enter()
                                     .append("svg")
-            .attr("width", STATEWIDTH)
-                                    .attr("height", STATEHEIGHT)
+            .attr("width", WIDTH)
+                                    .attr("height", HEIGHT)
 
             .attr("x", function (d){ 
                 //generate x coordinate for SVG
@@ -60,8 +61,8 @@
 										.attr("rx", 20)
 										.attr("ry", 20)
 										
-										.attr("height", STATEHEIGHT)
-										.attr("width", STATEWIDTH)
+										.attr("height", HEIGHT)
+										.attr("width", WIDTH)
 										.style("fill", function(d) { 
 														if (d.AnyCurrentDepression>=13.2 && d.AnyCurrentDepression <=14.8)
 															return "#022835";
@@ -92,6 +93,10 @@
             var pizzaPath = [ {"x": 10, "y": 25}, {"x": 30, "y": 65},
                              {"x": 50, "y": 25}, {"x": 30, "y": 20},
                              {"x": 10, "y": 25}];
+            
+            var pepperoniData = [
+                { "cx": 20, "cy": 20, "radius": 5, "color": "red" },
+                { "cx": 25, "cy": 30, "radius": 5, "color": "red" } ];
 
             var lineFunction = d3.svg.line()
             .x(function(d) { return d.x; })
@@ -111,8 +116,19 @@
             
             var PIZZATRANSLATE = 20;
             //ONE PIZZA
-            var stateRange1 = svgContainer.selectAll(".range1").append("path").attr("d", lineFunction(pizzaPath))
+            var stateRange1 = svgContainer.selectAll(".range1").append("g");
+            var pizza1 = stateRange1.append("path").attr("d", lineFunction(pizzaPath))
                 .attr("fill", "orange");
+            var pizzaTopping1 = stateRange1.selectAll("circle")
+            .data(pepperoniData)
+            .enter()
+            .append("circle");
+            
+            var toppingAttributes1 = pizzaTopping1
+                .attr("cx", function (d) { return d.cx; })
+                .attr("cy", function (d) { return d.cy; })
+                .attr("r", function (d) { return d.radius; })
+                .style("fill", function (d) { return d.color; });
             
             //TWO PIZZAS
             var stateRange2 = svgContainer.selectAll(".range2");
