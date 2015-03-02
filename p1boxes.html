@@ -14,7 +14,7 @@
         //constants
 		var MAINWIDTH = 1420,
 			MAINHEIGHT = 2500;
-        var STATEWIDTH = 180;
+        var WIDTH = 180;
         var HEIGHT = 120;
         
         var svgContainer;
@@ -61,8 +61,8 @@
 										.attr("rx", 20)
 										.attr("ry", 20)
 										
-										.attr("height", STATEHEIGHT)
-										.attr("width", STATEWIDTH)
+										.attr("height", HEIGHT)
+										.attr("width", WIDTH)
 										.style("fill", function(d) { 
 														if (d.AnyCurrentDepression>=13.2 && d.AnyCurrentDepression <=14.8)
 															return "#022835";
