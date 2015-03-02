@@ -11,11 +11,12 @@
 	<div id="map"></div>
 	
 	<script>
-		var width = 1420,
-			height = 2500;
-        
+        //constants
+		var MAINWIDTH = 1420,
+			MAINHEIGHT = 2500;
         var STATEWIDTH = 180;
-        var STATEHEIGHT = 120;
+        var HEIGHT = 120;
+        
         var svgContainer;
         var svgRectangles;
         var rectangles;
@@ -28,15 +29,15 @@
             
             //generate outer SVG
 			svgContainer = d3.select("body").append("svg")
-								 .attr("width", width)
-								 .attr("height", height);
+								 .attr("width", MAINWIDTH)
+								 .attr("height", MAINHEIGHT);
             
             //generate SVG per state
             svgRectangles = svgContainer.selectAll("svg")
                                     .data(rows).enter()
                                     .append("svg")
-            .attr("width", STATEWIDTH)
-                                    .attr("height", STATEHEIGHT)
+            .attr("width", WIDTH)
+                                    .attr("height", HEIGHT)
 
             .attr("x", function (d){ 
                 //generate x coordinate for SVG
