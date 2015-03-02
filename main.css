@@ -6,12 +6,13 @@ svg {
 
 body {
     margin: auto;
-    width: 900px;
+    width: 1000px;
 }
 
 header {
     display: block;
     margin: auto;
+    padding-top: 50px;
     text-align: center;
 }
 
@@ -20,12 +21,6 @@ h1 {
     color: #022835;
 }
 
-#key {
-    float: right;
-}
-#map {
-    float: left;
-}
 .land {
     fill: #222;
 }
