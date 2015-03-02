@@ -8,7 +8,8 @@
 	</head>
 
 		<header>
-		<h1> Pizza Stores<br>VS </br>Depression in the United States </h1> <!-- ADDED STUFF HERE -->
+		<h1> Pizza Stores VS Depression in the United States </h1> <!-- ADDED STUFF HERE -->
+            	</header>
 		<svg height = "160" width = "400" id="key"> 
 				<rect x = "0" y = "10" width = "30" height = "20" rx = "5" ry = "5" fill = "#022835"> </rect>
 				<text x = "35" y = "25" fill = "black" font-family = "lato"> = 13.2 - 14.8 </text>
@@ -21,7 +22,7 @@
 				<rect x = "0" y = "130" width = "30" height = "20" rx = "5" ry = "5" fill = "#6C939F"> </rect>
 				<text x = "35" y = "145" fill = "black" font-family = "lato"> = 4.8 - 6.8 </text>
 		</svg>
-	</header>
+
 
 	<body>
 	<!-- The SVG element will go in here -->
@@ -384,7 +385,8 @@
 
             var svg = d3.select("body").append("svg")
                 .attr("width", MAPWIDTH)
-                .attr("height", MAPHEIGHT);
+                .attr("height", MAPHEIGHT)
+                .attr("id", "map");
 
 d3.json("us.json", function(error, us) {
   d3.json("depressionDataStateUpdate.json", function(rows){
