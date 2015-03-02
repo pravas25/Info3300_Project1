@@ -40,16 +40,16 @@
 
             .attr("x", function (d){ 
                 //generate x coordinate for SVG
-                                if(d.id%7 != 0)
-                                    return ((d.id - 1)%7)*180 + ((d.id)%7)*20; 
+                                if(d.id%5 != 0)
+                                    return ((d.id - 1)%5)*180 + ((d.id)%5)*20; 
                                 else 
-                                    return ((d.id - 1)%7)*180 + 7*20; })
+                                    return ((d.id - 1)%5)*180 + 5*20; })
 										.attr("y", function (d) { 
                                             //generate Y coordinate for SVG
-                    if((parseInt(d.id%7)) != 0)
-                        return (parseInt(d.id/7))*120 +((parseInt(d.id/7))+1)*30; 
+                    if((parseInt(d.id%)) != 0)
+                        return (parseInt(d.id/9))*120 +((parseInt(d.id/9))+1)*30; 
                     else
-                        return (parseInt((d.id-1)/7))*120 +((parseInt((d.id-1)/7))+1)*30; 
+                        return (parseInt((d.id-1)/9))*120 +((parseInt((d.id-1)/9))+1)*30; 
 														})
             .attr("id", function(d, i) { return ( "svg_" + i) });
             
