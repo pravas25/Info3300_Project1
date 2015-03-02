@@ -6,34 +6,31 @@ svg {
 
 body {
     margin: auto;
+    width: 900px;
 }
 
 header {
-    display: inline-block;
-    padding: 30px;
+    display: block;
+    margin: auto;
+    text-align: center;
 }
 
 h1 {
-    float: left;
     font-family: Lato;
     color: #022835;
 }
 
 #key {
     float: right;
-    border: solid #26596A 1px; 
-    margin-left: 30px;
 }
-#map { border: solid black 1px; 
-width: 960px;
-height: 500px;
-margin: auto;}
-
+#map {
+    float: left;
+}
 .land {
-fill: #222;
+    fill: #222;
 }
 
 .state-boundary {
-fill: none;
-stroke: #fff;
+    fill: none;
+    stroke: #fff;
 }

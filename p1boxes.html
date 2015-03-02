@@ -6,11 +6,17 @@
 		<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 		<script src="http://d3js.org/topojson.v1.min.js"></script>
 	</head>
-
+	<body>
 		<header>
-		<h1> Pizza Stores<br>VS </br>Depression in the United States </h1> <!-- ADDED STUFF HERE -->
+
+		<h1> Pizza Stores VS Depression in the United States </h1> <!-- ADDED STUFF HERE -->
+            	</header>
 		<svg height = "250" width = "400" id="key"> 
+				<rect x = "0" y = "10" width = "30" height = "20" rx = "5" ry = "5" fill = "#022835"> </rect>
+
+
 				<rect x = "0" y = "10" width = "30" height = "20" rx = "5" ry = "5" fill = "#0B1B1E"> </rect>
+
 				<text x = "35" y = "25" fill = "black" font-family = "lato"> = 13.2 - 14.8 </text>
 				<rect x = "0" y = "40" width = "30" height = "20" rx = "5" ry = "5" fill = "#073945"> </rect>
 				<text x = "35" y = "55" fill = "black" font-family = "lato"> = 11.1 - 13.1 </text>
@@ -48,9 +54,9 @@
 
 
 		</svg>
-	</header>
 
-	<body>
+
+
 	<!-- The SVG element will go in here -->
 
 	
@@ -411,7 +417,8 @@
 
             var svg = d3.select("body").append("svg")
                 .attr("width", MAPWIDTH)
-                .attr("height", MAPHEIGHT);
+                .attr("height", MAPHEIGHT)
+                .attr("id", "map");
 
 d3.json("us.json", function(error, us) {
   d3.json("depressionDataStateUpdate.json", function(rows){
