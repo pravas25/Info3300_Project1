@@ -8,6 +8,7 @@ body {
     margin: auto;
     width: 1000px;
     text-align: center;
+    font-family: Lato;
 }
 
 header {
@@ -29,4 +30,9 @@ h1 {
 .state-boundary {
     fill: none;
     stroke: #fff;
+}
+
+#note {
+    font-size: 11px;
+    color: gray;
 }

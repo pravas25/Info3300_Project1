@@ -10,13 +10,12 @@
 		<header>
 
 		<h1> Pizza Stores VS Depression in the United States </h1>
-        <h3> So you've always felt just a tad bit happier after a slice of pizza, but ever wonder if pizza consumption can boost long term serotonin production in the brain enough to combat depression? Probably not, but here's some data on the presence of pizza stores versus depression in the US anyways.
-Zoom in and out of the page to get a better idea!</h3>
+        <p> So you've always felt just a tad bit happier after a slice of pizza, but ever wonder if pizza consumption can boost long term serotonin production in the brain enough to combat depression? Probably not, but here's some data on the presence of pizza stores versus depression in the US anyways.
+Zoom in and out of the page to get a better idea!</p>
+
          <!-- ADDED STUFF HERE -->
             	</header>
-                <footer> 
-                    <h4> The following states were excluded for lack of data: Kentucky, New Jersey, North Carolina, Pennsylvania, and South Dakota </h4>
-                </footer>
+
 		<svg height = "250" width = "400" id="key"> 
 				<rect x = "0" y = "10" width = "30" height = "20" rx = "5" ry = "5" fill = "#022835"> </rect>
 
@@ -59,7 +58,7 @@ Zoom in and out of the page to get a better idea!</h3>
 
 		</svg>
 
-
+            <p id="note">*The following states were excluded for lack of data: Kentucky, New Jersey, North Carolina, Pennsylvania, and South Dakota </p>
 
 	<!-- The SVG element will go in here -->
 
@@ -546,6 +545,8 @@ d3.json("us.json", function(error, us) {
 
 d3.select(self.frameElement).style("height", MAPHEIGHT + "px");
 	</script>
-
+            
+                    The following states were excluded for lack of data: Kentucky, New Jersey, North Carolina, Pennsylvania, and South Dakota 
 	</body>
+    
 </html>
