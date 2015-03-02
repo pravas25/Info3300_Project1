@@ -44,6 +44,7 @@
 
             .attr("x", function (d){ 
                 //generate x coordinate for SVG
+<<<<<<< HEAD
                                 if(d.id%ROW != 0)
                                     return ((d.id - 1)%ROW)*WIDTH + ((d.id)%ROW)*COLPADDING; 
                                 else 
@@ -54,6 +55,18 @@
                         return (parseInt(d.id/ROW))*HEIGHT +((parseInt(d.id/ROW))+1)*ROWPADDING; 
                     else
                         return (parseInt((d.id-1)/ROW))*HEIGHT +((parseInt((d.id-1)/ROW))+1)*ROWPADDING; 
+=======
+                                if(d.id%5 != 0)
+                                    return ((d.id - 1)%5)*180 + ((d.id)%5)*20; 
+                                else 
+                                    return ((d.id - 1)%5)*180 + 5*20; })
+										.attr("y", function (d) { 
+                                            //generate Y coordinate for SVG
+                    if((parseInt(d.id%)) != 0)
+                        return (parseInt(d.id/9))*120 +((parseInt(d.id/9))+1)*30; 
+                    else
+                        return (parseInt((d.id-1)/9))*120 +((parseInt((d.id-1)/9))+1)*30; 
+>>>>>>> origin/master
 														})
             .attr("id", function(d, i) { return ( "svg_" + i) });
             
