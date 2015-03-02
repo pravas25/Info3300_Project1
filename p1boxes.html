@@ -106,13 +106,13 @@
 							.text(function(d) { return d.State; });
 
             //generate pizza shape
-            var pizzaPath = [ {"x": 35, "y": 40}, {"x": 50, "y": 70},
-                             {"x": 65, "y": 40}, {"x": 50, "y": 35},
-                             {"x": 35, "y": 40}];
+            var pizzaPath = [ {"x": 25, "y": 40}, {"x": 35, "y": 70},
+                             {"x": 50, "y": 40}, {"x": 37, "y": 35},
+                             {"x": 25, "y": 40}];
             //generate pepperoni locations
             var pepperoniData = [
-                { "cx": 45, "cy": 45, "radius": 4, "color": "red" },
-                { "cx": 55, "cy": 55, "radius": 4, "color": "red" } ];
+                { "cx": 30, "cy": 45, "radius": 3.8, "color": "red" },
+                { "cx": 40, "cy": 55, "radius": 4, "color": "red" } ];
 
             var lineFunction = d3.svg.line()
             .x(function(d) { return d.x; })
@@ -121,6 +121,18 @@
             
             //Establish range of pizza stores for each state and set as class
             var stateClass = svgRectangles.attr("class", function(d) {                
+                if (d.StoresPerPeople <= 1.3625 ) return "range1";
+                if (d.StoresPerPeople <= 1.725 ) return "range2";
+                if (d.StoresPerPeople <= 2.0875 ) return "range3";
+                if (d.StoresPerPeople <= 2.45 ) return "range4";
+                if (d.StoresPerPeople <= 2.8125 ) return "range5";
+                if (d.StoresPerPeople <= 3.175 ) return "range6";
+                if (d.StoresPerPeople <= 3.5375 ) return "range7";
+                if (d.StoresPerPeople <= 3.9 ) return "range8";
+            });
+            
+            /*
+                        var stateClass = svgRectangles.attr("class", function(d) {                
                 if (d.StoresPerPeople <= 1.80 ) return "range1";
                 if (d.StoresPerPeople <= 2.05 ) return "range2";
                 if (d.StoresPerPeople <= 2.30 ) return "range3";
@@ -128,6 +140,7 @@
                 if (d.StoresPerPeople <= 3.20 ) return "range5";
                 if (d.StoresPerPeople <= 3.90 ) return "range6";
             });
+            */
             
             //ONE PIZZA
             //create group for one pizza
@@ -160,7 +173,7 @@
             //2nd pizza
             svgContainer.selectAll(".range2").append("use")
                 .attr("xlink:href","#pizzaFirst")
-                .attr("transform", "translate(40,0)");
+                .attr("transform", "translate(35,0)");
             
             var toppingAttributes2 = pizzaTopping2
                 .attr("cx", function (d) { return d.cx; })
@@ -169,7 +182,6 @@
                 .style("fill", function (d) { return d.color; });
             
             //THREE PIZZAS
-
             var stateRange3 = svgContainer.selectAll(".range3").append("g").attr("id", "pizzaFirst");
             var pizza3 = stateRange3.append("path").attr("d", lineFunction(pizzaPath))
                 .attr("fill", "#ffbd19");
@@ -181,10 +193,10 @@
             
             svgContainer.selectAll(".range3").append("use")
                 .attr("xlink:href","#pizzaFirst")
-                .attr("transform", "translate(40,0)");            
+                .attr("transform", "translate(35,0)");            
             svgContainer.selectAll(".range3").append("use")
                 .attr("xlink:href","#pizzaFirst")
-                .attr("transform", "translate(80,0)");
+                .attr("transform", "translate(70,0)");
             
             var toppingAttributes3 = pizzaTopping3
                 .attr("cx", function (d) { return d.cx; })
@@ -204,14 +216,14 @@
             
             svgContainer.selectAll(".range4").append("use")
                 .attr("xlink:href","#pizzaFirst")
-                .attr("transform", "translate(40,0)");            
+                .attr("transform", "translate(35,0)");            
             svgContainer.selectAll(".range4").append("use")
                 .attr("xlink:href","#pizzaFirst")
-                .attr("transform", "translate(80,0)");
-            //5th pizza
+                .attr("transform", "translate(70,0)");
+            //4th pizza
             svgContainer.selectAll(".range4").append("use")
                 .attr("xlink:href","#pizzaFirst")
-                .attr("transform", "translate(0,40)");
+                .attr("transform", "translate(105,0)");
             
             var toppingAttributes4 = pizzaTopping4
                 .attr("cx", function (d) { return d.cx; })
@@ -231,16 +243,16 @@
             
             svgContainer.selectAll(".range5").append("use")
                 .attr("xlink:href","#pizzaFirst")
-                .attr("transform", "translate(40,0)");            
+                .attr("transform", "translate(35,0)");            
             svgContainer.selectAll(".range5").append("use")
                 .attr("xlink:href","#pizzaFirst")
-                .attr("transform", "translate(80,0)");
+                .attr("transform", "translate(70,0)");
+            svgContainer.selectAll(".range5").append("use")
+                .attr("xlink:href","#pizzaFirst")
+                .attr("transform", "translate(105,0)");
             svgContainer.selectAll(".range5").append("use")
                 .attr("xlink:href","#pizzaFirst")
                 .attr("transform", "translate(0,40)");
-            svgContainer.selectAll(".range5").append("use")
-                .attr("xlink:href","#pizzaFirst")
-                .attr("transform", "translate(40,40)");
             
             var toppingAttributes5 = pizzaTopping5
                 .attr("cx", function (d) { return d.cx; })
@@ -260,21 +272,96 @@
             
             svgContainer.selectAll(".range6").append("use")
                 .attr("xlink:href","#pizzaFirst")
-                .attr("transform", "translate(40,0)");            
+                .attr("transform", "translate(35,0)");            
             svgContainer.selectAll(".range6").append("use")
                 .attr("xlink:href","#pizzaFirst")
-                .attr("transform", "translate(80,0)");
+                .attr("transform", "translate(70,0)");
+            svgContainer.selectAll(".range6").append("use")
+                .attr("xlink:href","#pizzaFirst")
+                .attr("transform", "translate(105,0)");
             svgContainer.selectAll(".range6").append("use")
                 .attr("xlink:href","#pizzaFirst")
                 .attr("transform", "translate(0,40)");
             svgContainer.selectAll(".range6").append("use")
                 .attr("xlink:href","#pizzaFirst")
-                .attr("transform", "translate(40,40)");
-            svgContainer.selectAll(".range6").append("use")
-                .attr("xlink:href","#pizzaFirst")
-                .attr("transform", "translate(80,40)");
+                .attr("transform", "translate(35,40)");
             
             var toppingAttributes6 = pizzaTopping6
+                .attr("cx", function (d) { return d.cx; })
+                .attr("cy", function (d) { return d.cy; })
+                .attr("r", function (d) { return d.radius; })
+                .style("fill", function (d) { return d.color; });
+                        
+            //SEVEN PIZZAS
+            var stateRange7 = svgContainer.selectAll(".range7").append("g").attr("id", "pizzaFirst");
+            var pizza7 = stateRange7.append("path").attr("d", lineFunction(pizzaPath))
+                .attr("fill", "#ffbd19");
+                
+            var pizzaTopping7 = stateRange7.selectAll("circle")
+                .data(pepperoniData)
+                .enter()
+                .append("circle");
+            
+            svgContainer.selectAll(".range7").append("use")
+                .attr("xlink:href","#pizzaFirst")
+                .attr("transform", "translate(35,0)");            
+            svgContainer.selectAll(".range7").append("use")
+                .attr("xlink:href","#pizzaFirst")
+                .attr("transform", "translate(70,0)");
+            svgContainer.selectAll(".range7").append("use")
+                .attr("xlink:href","#pizzaFirst")
+                .attr("transform", "translate(105,0)");
+            svgContainer.selectAll(".range7").append("use")
+                .attr("xlink:href","#pizzaFirst")
+                .attr("transform", "translate(0,40)");
+            svgContainer.selectAll(".range7").append("use")
+                .attr("xlink:href","#pizzaFirst")
+                .attr("transform", "translate(35,40)");
+            //7th pizza
+            svgContainer.selectAll(".range7").append("use")
+                .attr("xlink:href","#pizzaFirst")
+                .attr("transform", "translate(70,40)");
+            
+            var toppingAttributes7 = pizzaTopping7
+                .attr("cx", function (d) { return d.cx; })
+                .attr("cy", function (d) { return d.cy; })
+                .attr("r", function (d) { return d.radius; })
+                .style("fill", function (d) { return d.color; });
+            
+            //EIGHT PIZZAS
+            var stateRange8 = svgContainer.selectAll(".range8").append("g").attr("id", "pizzaFirst");
+            var pizza8 = stateRange8.append("path").attr("d", lineFunction(pizzaPath))
+                .attr("fill", "#ffbd19");
+                
+            var pizzaTopping8 = stateRange8.selectAll("circle")
+                .data(pepperoniData)
+                .enter()
+                .append("circle");
+            
+            svgContainer.selectAll(".range8").append("use")
+                .attr("xlink:href","#pizzaFirst")
+                .attr("transform", "translate(35,0)");            
+            svgContainer.selectAll(".range8").append("use")
+                .attr("xlink:href","#pizzaFirst")
+                .attr("transform", "translate(70,0)");
+            svgContainer.selectAll(".range8").append("use")
+                .attr("xlink:href","#pizzaFirst")
+                .attr("transform", "translate(105,0)");
+            svgContainer.selectAll(".range8").append("use")
+                .attr("xlink:href","#pizzaFirst")
+                .attr("transform", "translate(0,40)");
+            svgContainer.selectAll(".range8").append("use")
+                .attr("xlink:href","#pizzaFirst")
+                .attr("transform", "translate(35,40)");
+            //7th pizza
+            svgContainer.selectAll(".range8").append("use")
+                .attr("xlink:href","#pizzaFirst")
+                .attr("transform", "translate(70,40)");
+            svgContainer.selectAll(".range8").append("use")
+                .attr("xlink:href","#pizzaFirst")
+                .attr("transform", "translate(105,40)");
+            
+            var toppingAttributes8 = pizzaTopping8
                 .attr("cx", function (d) { return d.cx; })
                 .attr("cy", function (d) { return d.cy; })
                 .attr("r", function (d) { return d.radius; })
