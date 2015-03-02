@@ -4,8 +4,28 @@
 		<!-- Load the d3 library. -->
 		<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 		<script src="http://d3js.org/topojson.v1.min.js"></script>
-
+		<style>
+		svg {margin-left:auto; margin-right: auto; display:block;} /*ADDED STUFF HERE*/
+		svg { border: solid black 1px; } /*ADDED STUFF HERE*/
+		</style>
 	</head>
+
+		<header>
+		<h1 align = "center"> Pizza Stores per Capita VS Depression in the US </h1> <!-- ADDED STUFF HERE -->
+		<svg height = "160" width = "400"> 
+				<rect x = "0" y = "10" width = "30" height = "20" rx = "5" ry = "5" fill = "#022835"> </rect>
+				<text x = "35" y = "25" fill = "black" font-family = "lato"> = 13.2 - 14.8 </text>
+				<rect x = "0" y = "40" width = "30" height = "20" rx = "5" ry = "5" fill = "#104050"> </rect>
+				<text x = "35" y = "55" fill = "black" font-family = "lato"> = 11.1 - 13.1 </text>
+				<rect x = "0" y = "70" width = "30" height = "20" rx = "5" ry = "5" fill = "#26596A"> </rect>
+				<text x = "35" y = "85" fill = "black" font-family = "lato"> = 9.0 - 11.0 </text>
+				<rect x = "0" y = "100" width = "30" height = "20" rx = "5" ry = "5" fill = "#457585"> </rect>
+				<text x = "35" y = "115" fill = "black" font-family = "lato"> = 6.9 - 8.9 </text>
+				<rect x = "0" y = "130" width = "30" height = "20" rx = "5" ry = "5" fill = "#6C939F"> </rect>
+				<text x = "35" y = "145" fill = "black" font-family = "lato"> = 4.8 - 6.8 </text>
+		</svg>
+	</header>
+
 	<body>
 	<!-- The SVG element will go in here -->
 	<div id="map"></div>
