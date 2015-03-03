@@ -1,0 +1,171 @@
+<html>
+	<head>
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+		<!-- Load the d3 library. -->
+		<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+		<script src="http://d3js.org/topojson.v1.min.js"></script>
+		<style>
+			#map { border: solid black 1px; 
+				   width: 960px;
+				   height: 500px;
+				   margin: auto;}
+			
+			.land {
+			  fill: #222;
+			}
+
+			.state-boundary {
+			  fill: none;
+			  stroke: #fff;
+			}
+		</style>
+	</head>
+	<body>
+	<!-- The SVG element will go in here -->
+	<div id="map"></div>
+	
+	<script>
+
+var temp_data;
+var MAPWIDTH = 960,
+    MAPHEIGHT = 500;
+
+var projection = d3.geo.albersUsa()
+    .scale(1000)
+    .translate([MAPWIDTH / 2, MAPHEIGHT / 2]);
+
+var path = d3.geo.path()
+    .projection(projection);
+
+var svg = d3.select("#map").append("svg")
+    .attr("width", MAPWIDTH)
+    .attr("height", MAPHEIGHT);
+
+d3.json("us.json", function(error, us) {
+  d3.json("depressionDataStateUpdate.json", function(rows){
+  
+	temp_data = rows;
+		console.log(rows.length);
+	  svg.selectAll(".subunit")
+		.data(topojson.feature(us, us.objects.states).features)
+		.enter().append("path")
+		.attr("d", path)
+		.text(function(state){
+							return state.id})
+		.style("fill", function(state){
+		  //console.log(rows[state.id-1]);
+			//return "rgb(" + rows[state.id-1].AnyCurrentDepression * 20 + ",0,0)";
+			//console.log(rows[state.id-1]);
+			var temp;
+			for(var i=0; i<rows.length;  i++){
+				if(rows[i].id == state.id){
+					temp = i;
+					break;
+				}
+			}
+			if(rows[temp]){
+			console.log("temp: " + temp + ". state.id: " + state.id); 
+			if (rows[temp].AnyCurrentDepression>=13.2 && rows[temp].AnyCurrentDepression <=14.8){
+				console.log("state: " + state.id + "; anycurrent: " + rows[temp].AnyCurrentDepression  );
+				return "#022835";	
+			}
+			else if (rows[temp].AnyCurrentDepression>=11.1 && rows[temp].AnyCurrentDepression<=13.1){
+				console.log("state: " + state.id + "; anycurrent: " + rows[temp].AnyCurrentDepression  );
+				return "#104050";}
+			else if (rows[temp].AnyCurrentDepression>=9 && rows[temp].AnyCurrentDepression<=11)
+				return "#26596A";
+			else if (rows[temp].AnyCurrentDepression>=6.9 && rows[temp].AnyCurrentDepression<=8.9)
+				return "#457585";
+			else if (rows[temp].AnyCurrentDepression>=4.8 && rows[temp].AnyCurrentDepression<=6.8)
+				return "#6C939F";
+			else
+				return "gray";
+			}
+			});
+			
+		var legend = [1.00, 1.81, 2.05, 2.31, 2.51, 3.20];
+		for(var i=0; i<6; i++){
+		  if(i<3){
+			svg.selectAll(".circle")
+				.data(topojson.feature(us, us.objects.states).features)
+				.enter().append("circle")
+				.attr("cx", function(feature){
+				  var center = path.centroid(feature.geometry)[0];
+				  if(isNaN(center))
+					return 99999;
+				  else return (center + i*7)-10;
+				})
+				.attr("cy", function(feature){
+				  var center = path.centroid(feature.geometry)[1];
+				  if(isNaN(center))
+					return 99999;
+				  else return center;
+				})
+				.attr("r", 3)
+				.style("fill", function(state){
+				  
+				    var temp;
+					for(var j=0; j<rows.length;  j++){
+						if(rows[j].id == state.id){
+							temp = j;
+							break;
+						}
+					}
+					if(rows[temp]){
+						if (rows[temp].StoresPerPeople>=legend[i]){
+							return "orange";	
+						}else{
+						    return "rgba(0,0,0,0)";
+						}
+					}
+				  
+				  
+				});
+		  }
+		  else{
+			svg.selectAll(".circle")
+				.data(topojson.feature(us, us.objects.states).features)
+				.enter().append("circle")
+				.attr("cx", function(feature){
+				  var center = path.centroid(feature.geometry)[0];
+				  if(isNaN(center))
+					return 99999;
+				  else return (center + (i%3)*7)-8;
+				})
+				.attr("cy", function(feature){
+				  var center = path.centroid(feature.geometry)[1];
+				  if(isNaN(center))
+					return 99999;
+				  else return center + 8;
+				})
+				.attr("r", 3)
+				.style("fill", function(state){
+				  
+				    var temp;
+					for(var j=0; j<rows.length;  j++){
+						if(rows[j].id == state.id){
+							temp = j;
+							break;
+						}
+					}
+					if(rows[temp]){
+						if (rows[temp].StoresPerPeople>=legend[i]){
+							return "orange";	
+						}else{
+						    return "rgba(0,0,0,0)";
+						}
+					}
+				  
+				  
+				});
+		  }
+		}
+  })
+});
+
+d3.select(self.frameElement).style("height", MAPHEIGHT + "px");
+
+</script>
+
+	</body>
+</html>

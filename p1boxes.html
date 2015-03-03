@@ -465,19 +465,52 @@ d3.json("us.json", function(error, us) {
 			});
 			
 		var legend = [1, 1.3625, 1.725, 2.0875, 2.45, 2.8125, 3.175, 3.5375];
+		var stateIds = [25, 9, 44];
 		for(var i=0; i<8; i++){
 		  if(i<4){
 			svg.selectAll(".circle")
 				.data(topojson.feature(us, us.objects.states).features)
 				.enter().append("circle")
-				.attr("cx", function(feature){
+				.attr("cx", function(feature){//first line for x
 				  var center = path.centroid(feature.geometry)[0];
+				  if(feature.id == 12){
+					//var oldCenter = center;
+					center = center + 10;
+					
+				  }
+				  if(feature.id == 26){
+					center = center + 6;
+				  }
+				  if(feature.id == 25){//MA
+					center = center + 25;
+				  }
+				  if(feature.id == 10){
+					center = center + 20;
+				  }
+				  if(feature.id == 9){//Conn
+					//center = center + 10;
+				  }
+				  if(feature.id == 44){//RI
+					center = center + 20;
+				  }
 				  if(isNaN(center))
 					return 99999;
 				  else return (center + i*7)-10;
 				})
-				.attr("cy", function(feature){
+				.attr("cy", function(feature){//first line for y
 				  var center = path.centroid(feature.geometry)[1];
+				  if(feature.id == 50){
+					center = center - 12;
+				  }
+				  if(feature.id == 25){
+					center = center -3 ;
+				  }
+				  if(feature.id == 9){//Conn
+					center = center - 2;
+				  }
+				  if(feature.id == 44){//RI
+					center = center + 10;
+				  }
 				  if(isNaN(center))
 					return 99999;
 				  else return center;
@@ -506,14 +539,38 @@ d3.json("us.json", function(error, us) {
 			svg.selectAll(".circle")
 				.data(topojson.feature(us, us.objects.states).features)
 				.enter().append("circle")
-				.attr("cx", function(feature){
+				.attr("cx", function(feature){//second line for x
 				  var center = path.centroid(feature.geometry)[0];
+				  if(feature.id == 26){
+					center = center + 10;
+				  }
+				  if(feature.id == 25){//MA
+					center = center + 30;
+				  }
+				  if(feature.id == 9){//Conn
+					//center = center -2;
+				  }
+				  if(feature.id == 44){//RI
+					center = center + 20;
+				  }
 				  if(isNaN(center))
 					return 99999;
 				  else return (center + (i%4)*7)-8;
 				})
-				.attr("cy", function(feature){
+				.attr("cy", function(feature){//second line for y
 				  var center = path.centroid(feature.geometry)[1];
+				  if(feature.id == 50){
+					center = center - 12;
+				  }
+				  if(feature.id == 25){
+					center = center -3;
+				  }
+				  if(feature.id == 9){//Conn
+					center = center -2;
+				  }
+				  if(feature.id == 44){//RI
+					center = center + 10;
+				  }
 				  if(isNaN(center))
 					return 99999;
 				  else return center + 8;
